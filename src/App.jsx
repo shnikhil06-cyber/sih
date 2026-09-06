@@ -11,6 +11,7 @@ import { RecyclerFinder } from './components/collector/RecyclerFinder.jsx';
 import { MyLots } from './components/collector/MyLots.jsx';
 import { EarningsView } from './components/collector/EarningsView.jsx';
 import { SafetyModule } from './components/collector/SafetyModule.jsx';
+import { CollectorProfile } from './components/collector/CollectorProfile.jsx';
 import { RecyclerDashboard } from './components/recycler/RecyclerDashboard.jsx';
 import { UnitEconomics } from './components/analytics/UnitEconomics.jsx';
 import { SystemArchitectureView } from './components/architecture/SystemArchitectureView.jsx';
@@ -64,6 +65,8 @@ export const App = () => {
             language={language}
             setLanguage={setLanguage}
             onOpenLoginModal={() => setIsLoginModalOpen(true)}
+            collectorScreen={collectorScreen}
+            setCollectorScreen={setCollectorScreen}
           >
             {collectorScreen === 'home' && (
               <CollectorHome
@@ -111,6 +114,30 @@ export const App = () => {
                 onBack={() => setCollectorScreen('home')}
               />
             )}
+            {collectorScreen === 'profile' && (
+              <CollectorProfile
+                profile={profile}
+                language={language}
+                setLanguage={setLanguage}
+                onBack={() => setCollectorScreen('home')}
+                onOpenLoginModal={() => setIsLoginModalOpen(true)}
+                isOnline={isOnline}
+                pendingCount={pendingCount}
+              />
+            )}
+
+            {/* In-App Login & Language Selection Modal (Inside Phone Frame) */}
+            <AppLoginModal
+              isOpen={isLoginModalOpen}
+              onClose={() => setIsLoginModalOpen(false)}
+              language={language}
+              setLanguage={setLanguage}
+              activeTab={activeTab}
+              setActiveTab={setActiveTab}
+              isOnline={isOnline}
+              pendingCount={pendingCount}
+              isInsidePhone={true}
+            />
           </PhoneContainer>
         )}
 

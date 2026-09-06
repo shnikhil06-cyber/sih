@@ -12,6 +12,7 @@ export const AppLoginModal = ({
   setActiveTab,
   isOnline,
   pendingCount,
+  isInsidePhone = false,
 }) => {
   if (!isOpen) return null;
 
@@ -26,8 +27,12 @@ export const AppLoginModal = ({
   ];
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/80 backdrop-blur-xs animate-fadeIn">
-      <div className="bg-white w-full max-w-sm rounded-3xl p-5 space-y-4 shadow-2xl border border-slate-200 relative max-h-[90vh] overflow-y-auto">
+    <div className={`${
+      isInsidePhone
+        ? 'absolute inset-0 z-50 flex items-center justify-center p-3 bg-slate-900/80 backdrop-blur-xs animate-fadeIn rounded-[36px] overflow-hidden'
+        : 'fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/80 backdrop-blur-xs animate-fadeIn'
+    }`}>
+      <div className="bg-white w-full max-w-sm rounded-3xl p-4 space-y-3 shadow-2xl border border-slate-200 relative max-h-[92%] overflow-y-auto">
         {/* Close Button */}
         <button
           onClick={onClose}
