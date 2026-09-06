@@ -16,12 +16,14 @@ export const RecyclerDashboard = () => {
   const [finalPriceInput, setFinalPriceInput] = useState(15050);
   const [paymentMethod, setPaymentMethod] = useState('CASH');
   const [handoverGps, setHandoverGps] = useState('Detecting Live Location...');
+  const [activeZone, setActiveZone] = useState('Detecting Service Zone...');
   const [anomalyResult, setAnomalyResult] = useState(null);
   const [receiptLot, setReceiptLot] = useState(null);
 
   useEffect(() => {
     GeoService.getCurrentLocation().then(loc => {
       setHandoverGps(loc.fullString);
+      setActiveZone(`${loc.placeName} Zone`);
     });
   }, []);
 
@@ -122,14 +124,14 @@ export const RecyclerDashboard = () => {
               </span>
             </div>
             <p className="text-xs text-slate-500 font-medium mt-1">
-              Facility Location: Hadapsar Industrial Estate, Pune • Reg: MPCB/EW-REG/2024/0981
+              Facility Location: {activeZone} • Reg: MPCB/EW-REG/2024/0981
             </p>
           </div>
         </div>
 
         <div className="flex items-center space-x-2 text-xs text-slate-700 bg-slate-100 px-3.5 py-2 rounded-xl border border-slate-200 font-medium">
           <span>Active Service Zone:</span>
-          <span className="font-bold text-teal-800">Pune East & Central</span>
+          <span className="font-bold text-teal-800">{activeZone}</span>
         </div>
       </div>
 

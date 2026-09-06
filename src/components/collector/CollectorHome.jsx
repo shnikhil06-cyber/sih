@@ -3,7 +3,16 @@ import { Volume2, ChevronRight, UserCheck, ShieldCheck } from 'lucide-react';
 import { TTSService } from '../../services/ttsService.js';
 import { getText } from '../../services/i18n.js';
 
+import { GeoService } from '../../services/geoService.js';
+
 export const CollectorHome = ({ profile, language, onNavigate }) => {
+  const [liveLocationName, setLiveLocationName] = React.useState(profile.operating_area || 'Detecting Location...');
+
+  React.useEffect(() => {
+    GeoService.getCurrentLocation().then(loc => {
+      setLiveLocationName(loc.placeName);
+    });
+  }, []);
   const getSpokenText = (key) => {
     const translations = {
       sell: {
@@ -58,7 +67,7 @@ export const CollectorHome = ({ profile, language, onNavigate }) => {
               <h2 className="font-bold text-white text-base">{profile.name}</h2>
               <UserCheck className="w-4 h-4 text-emerald-200" />
             </div>
-            <p className="text-xs text-emerald-100 font-medium">ID: {profile.collector_id} • {profile.operating_area}</p>
+            <p className="text-xs text-emerald-100 font-medium">ID: {profile.collector_id} • {liveLocationName}</p>
           </div>
         </div>
         <div className="text-right">
