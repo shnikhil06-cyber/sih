@@ -88,8 +88,34 @@ export const ReceiptModal = ({ lot, onClose }) => {
             </div>
           </div>
 
+          {/* Digital Verification QR Code */}
+          <div className="pt-3 border-t border-slate-200 flex items-center justify-between bg-white p-3 rounded-xl border border-slate-200">
+            <div className="space-y-0.5 font-sans">
+              <span className="text-[11px] font-black text-slate-800 uppercase block">Traceability Certificate QR</span>
+              <p className="text-[10px] text-slate-500 font-medium leading-tight">Scan for government MPCB compliance audit verification</p>
+            </div>
+
+            {/* Simulated QR Code Graphic */}
+            <div className="w-14 h-14 bg-slate-900 p-1 rounded-lg flex flex-col justify-between flex-shrink-0">
+              <div className="flex justify-between">
+                <div className="w-4 h-4 border-2 border-white rounded-xs flex items-center justify-center">
+                  <div className="w-1.5 h-1.5 bg-white"></div>
+                </div>
+                <div className="w-4 h-4 border-2 border-white rounded-xs flex items-center justify-center">
+                  <div className="w-1.5 h-1.5 bg-white"></div>
+                </div>
+              </div>
+              <div className="flex justify-between items-end">
+                <div className="w-4 h-4 border-2 border-white rounded-xs flex items-center justify-center">
+                  <div className="w-1.5 h-1.5 bg-white"></div>
+                </div>
+                <div className="w-3 h-3 bg-emerald-400 rounded-xs"></div>
+              </div>
+            </div>
+          </div>
+
           {/* Verification Badge */}
-          <div className="mt-3 pt-3 border-t border-slate-200 flex items-center justify-center space-x-2 text-emerald-800 font-sans font-extrabold text-xs bg-emerald-100/60 py-2 rounded-xl border border-emerald-200">
+          <div className="mt-2 pt-2 border-t border-slate-200 flex items-center justify-center space-x-2 text-emerald-800 font-sans font-extrabold text-xs bg-emerald-100/60 py-2 rounded-xl border border-emerald-200">
             <CheckCircle className="w-4 h-4 text-emerald-600" />
             <span>✓ Digital Handover Verified</span>
           </div>

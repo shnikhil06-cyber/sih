@@ -133,6 +133,45 @@ export const UnitEconomics = () => {
         </div>
       </div>
 
+      {/* Environmental & Social Impact Metrics */}
+      <div className="bg-gradient-to-br from-slate-900 to-teal-950 text-white p-6 rounded-2xl space-y-4 shadow-lg">
+        <div className="flex items-center justify-between border-b border-teal-800/60 pb-3">
+          <h3 className="text-base font-extrabold text-teal-300 flex items-center space-x-2">
+            <span>🌿</span>
+            <span>ESG Environmental & Social Impact Metrics</span>
+          </h3>
+          <span className="text-xs bg-emerald-500/20 text-emerald-300 px-2.5 py-1 rounded-full border border-emerald-400/30 font-bold">
+            Simulated Batch: {wasteWeightKg} kg
+          </span>
+        </div>
+
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
+          <div className="bg-white/5 border border-white/10 p-3.5 rounded-xl space-y-1">
+            <span className="text-[10px] text-teal-200 uppercase font-black tracking-wider block">CO₂ Prevented</span>
+            <span className="text-2xl font-black text-emerald-400">{(wasteWeightKg * 2.4).toFixed(0)} kg</span>
+            <span className="text-[10px] text-slate-400 block font-medium">Avoided incineration</span>
+          </div>
+
+          <div className="bg-white/5 border border-white/10 p-3.5 rounded-xl space-y-1">
+            <span className="text-[10px] text-teal-200 uppercase font-black tracking-wider block">Water Protection</span>
+            <span className="text-2xl font-black text-cyan-400">{(wasteWeightKg * 14.5).toFixed(0)} L</span>
+            <span className="text-[10px] text-slate-400 block font-medium">Lead/acid runoff saved</span>
+          </div>
+
+          <div className="bg-white/5 border border-white/10 p-3.5 rounded-xl space-y-1">
+            <span className="text-[10px] text-teal-200 uppercase font-black tracking-wider block">Copper Recovered</span>
+            <span className="text-2xl font-black text-amber-400">{(wasteWeightKg * 0.18).toFixed(1)} kg</span>
+            <span className="text-[10px] text-slate-400 block font-medium">High purity metal</span>
+          </div>
+
+          <div className="bg-white/5 border border-white/10 p-3.5 rounded-xl space-y-1">
+            <span className="text-[10px] text-teal-200 uppercase font-black tracking-wider block">Green Job Hours</span>
+            <span className="text-2xl font-black text-emerald-300">{(wasteWeightKg * 0.4).toFixed(0)} hrs</span>
+            <span className="text-[10px] text-slate-400 block font-medium">Safe formal labor</span>
+          </div>
+        </div>
+      </div>
+
       {/* Sustainable Revenue Model Breakdown */}
       <div className="bg-white border border-slate-200 p-6 rounded-2xl space-y-4 shadow-sm">
         <h3 className="text-base font-bold text-slate-900 flex items-center space-x-2">

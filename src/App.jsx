@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Header } from './components/common/Header.jsx';
 import { OfflineSyncBar } from './components/common/OfflineSyncBar.jsx';
 import { PhoneContainer } from './components/common/PhoneContainer.jsx';
+import { AudioSpeakerToast } from './components/common/AudioSpeakerToast.jsx';
 import { CollectorHome } from './components/collector/CollectorHome.jsx';
 import { SellEWasteFlow } from './components/collector/SellEWasteFlow.jsx';
 import { PriceDiscovery } from './components/collector/PriceDiscovery.jsx';
@@ -11,13 +12,14 @@ import { EarningsView } from './components/collector/EarningsView.jsx';
 import { SafetyModule } from './components/collector/SafetyModule.jsx';
 import { RecyclerDashboard } from './components/recycler/RecyclerDashboard.jsx';
 import { UnitEconomics } from './components/analytics/UnitEconomics.jsx';
+import { SystemArchitectureView } from './components/architecture/SystemArchitectureView.jsx';
 import { LocalDatabase } from './services/db.js';
 import { syncEngine } from './services/syncEngine.js';
 
 export const App = () => {
   const [activeTab, setActiveTab] = useState('collector');
   const [collectorScreen, setCollectorScreen] = useState('home');
-  const [language, setLanguage] = useState('mr');
+  const [language, setLanguage] = useState('en');
   
   const [isOnline, setIsOnline] = useState(() => LocalDatabase.isOnline());
   const [pendingCount, setPendingCount] = useState(() => LocalDatabase.getPendingSyncCount());
@@ -111,7 +113,14 @@ export const App = () => {
         {activeTab === 'economics' && (
           <UnitEconomics />
         )}
+
+        {activeTab === 'architecture' && (
+          <SystemArchitectureView />
+        )}
       </main>
+
+      {/* Global Audio Speaker Subtitle & Equalizer Toast */}
+      <AudioSpeakerToast />
 
       {/* Footer */}
       <footer className="bg-white border-t border-slate-200 text-center py-4 text-xs text-slate-500 font-medium">

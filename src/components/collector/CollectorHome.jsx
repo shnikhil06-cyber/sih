@@ -1,49 +1,73 @@
 import React from 'react';
 import { Volume2, ChevronRight, UserCheck, ShieldCheck } from 'lucide-react';
 import { TTSService } from '../../services/ttsService.js';
+import { getText } from '../../services/i18n.js';
 
 export const CollectorHome = ({ profile, language, onNavigate }) => {
   const getSpokenText = (key) => {
-    switch (key) {
-      case 'sell':
-        return language === 'mr'
-          ? 'ई-कचरा विका. फोटो काढा आणि उत्तम दर मिळवा.'
-          : language === 'hi'
-          ? 'ई-कचरा बेचें। फोटो खींचें और सबसे अच्छी कीमत पाएं।'
-          : 'Sell E-Waste. Take photo and get best price.';
-      case 'price':
-        return language === 'mr'
-          ? 'आजचे दर पहा. तांबे, सर्किट बोर्ड आणि बॅटरीचे सध्याचे भाव.'
-          : language === 'hi'
-          ? 'आज का भाव देखें। तांबा, सर्किट बोर्ड और बैटरी की ताज़ा दरें।'
-          : 'Check market prices for metals and e-waste.';
-      case 'recyclers':
-        return language === 'mr'
-          ? 'अधिकृत रीसायकलर्स शोधा. मोफत पिकअप देणारे जवळचे केंद्र.'
-          : language === 'hi'
-          ? 'अधिकृत रिसाइकिलर खोजें। मुफ्त पिकअप केंद्र।'
-          : 'Find verified authorized recyclers near you.';
-      case 'lots':
-        return language === 'mr'
-          ? 'माझे लॉट पहा. तुमचे जमा केलेले साहित्य आणि पोच पावती.'
-          : language === 'hi'
-          ? 'मेरे लॉट देखें। आपकी डिजिटल रसीद और स्थिति।'
-          : 'View your recorded e-waste lots and receipts.';
-      case 'earnings':
-        return language === 'mr'
-          ? 'माझी कमाई पहा. आतापर्यंत मिळालेले सर्व पैसे.'
-          : language === 'hi'
-          ? 'मेरी कुल कमाई देखें। बैंक और नकद भुगतान।'
-          : 'View your total earnings and payment history.';
-      case 'safety':
-        return language === 'mr'
-          ? 'सुरक्षा नियम पहा. तार जाळू नका आणि काच फोडू नका.'
-          : language === 'hi'
-          ? 'सुरक्षा निर्देश देखें। तार जलाना सख्त मना है।'
-          : 'View e-waste handling safety guidelines.';
-      default:
-        return '';
-    }
+    const translations = {
+      sell: {
+        mr: 'ई-कचरा विका. फोटो काढा आणि उत्तम दर मिळवा.',
+        hi: 'ई-कचरा बेचें। फोटो खींचें और सबसे अच्छी कीमत पाएं।',
+        te: 'ఈ-వేస్ట్ అమ్మండి. ఫోటో తీసి ఉత్తమ ధర పొందండి.',
+        kn: 'ಇ-ತ್ಯಾಜ್ಯ ಮಾರಿ. ಫೋಟೋ ತೆಗೆದು ಉತ್ತಮ ಬೆಲೆ ಪಡೆಯಿರಿ.',
+        ta: 'மின் கழிவுகளை விற்கவும். படம் எடுத்து சிறந்த விலை பெறவும்.',
+        gu: 'ઇ-કચરો વેચો. ફોટો પાડીને શ્રેષ્ઠ કિંમત મેળવો.',
+        bn: 'ই-বর্জ্য বিক্রি করুন। ছবি তুলুন এবং সেরা দাম পান।',
+        en: 'Sell E-Waste. Take photo and get best price.'
+      },
+      price: {
+        mr: 'आजचे दर पहा. तांबे, सर्किट बोर्ड आणि बॅटरीचे सध्याचे भाव.',
+        hi: 'आज का भाव देखें। तांबा, सर्किट बोर्ड और बैटरी की ताज़ा दरें।',
+        te: 'ఈరోజు ధరలు చూడండి. రాగి, సర్క్యూట్ బోర్డ్ తాజా రేట్లు.',
+        kn: 'ಇಂದಿನ ದರಗಳನ್ನು ಪರಿಶೀಲಿಸಿ. ತಾಮ್ರ, ಸರ್ಕ್ಯೂಟ್ ಬೋರ್ಡ್ ಬೆಲೆಗಳು.',
+        ta: 'இன்றைய விலையை சரிபார்க்கவும். தாமிரம் மற்றும் சர்க்யூட் போர்டு.',
+        gu: 'આજના ભાવ જુઓ. તાંબુ અને સર્કિટ બોર્ડના નવા દરો.',
+        bn: 'আজকের দাম দেখুন। তামা, সার্কিট বোর্ড এবং ব্যাটারির দর।',
+        en: 'Check market prices for metals and e-waste.'
+      },
+      recyclers: {
+        mr: 'अधिकृत रीसायकलर्स शोधा. मोफत पिकअप देणारे जवळचे केंद्र.',
+        hi: 'अधिकृत रिसाइकिलर खोजें। मुफ्त पिकअप केंद्र।',
+        te: 'అధికారిక రీసైక్లర్లను కనుగొనండి. ఉచిత పికప్.',
+        kn: 'ಅಧಿಕೃತ ರಿಸೈಕ್ಲರ್‌ಗಳನ್ನು ಹುಡುಕಿ. ಉಚಿತ ಪಿಕ್ಅಪ್.',
+        ta: 'அங்கீகரிக்கப்பட்ட மறுசுழற்சியாளர்களைக் கண்டறியவும்.',
+        gu: 'અધિકૃત રિસાયકલર્સ શોધો. મફત પીકઅપ.',
+        bn: 'অনুমোদিত রিসাইক্লার খুঁজুন। বিনামূল্যে পিকআপ।',
+        en: 'Find verified authorized recyclers near you.'
+      },
+      lots: {
+        mr: 'माझे लॉट पहा. तुमचे जमा केलेले साहित्य आणि पोच पावती.',
+        hi: 'मेरे लॉट देखें। आपकी डिजिटल रसीद और स्थिति।',
+        te: 'నా లాట్‌లు చూడండి. డిజిటల్ రసీదు మరియు స్థితి.',
+        kn: 'ನನ್ನ ಲಾಟ್‌ಗಳನ್ನು ವೀಕ್ಷಿಸಿ. ಡಿಜಿಟಲ್ ರಶೀದಿ.',
+        ta: 'என் லாக்டுகளைப் பார்க்கவும். டிஜிட்டல் ரசீது.',
+        gu: 'મારા લોટ જુઓ. ડિજિટલ રસીદ અને સ્થિતિ.',
+        bn: 'আমার লট দেখুন। ডিজিটাল রসিদ ও অবস্থা।',
+        en: 'View your recorded e-waste lots and receipts.'
+      },
+      earnings: {
+        mr: 'माझी कमाई पहा. आतापर्यंत मिळालेले सर्व पैसे.',
+        hi: 'मेरी कुल कमाई देखें। बैंक और नकद भुगतान।',
+        te: 'నా సంపాదన చూడండి. మొత్తం నగదు సేకరించబడింది.',
+        kn: 'ನನ್ನ ಗಳಿಕೆಯನ್ನು ವೀಕ್ಷಿಸಿ. ಒಟ್ಟು ಆದಾಯ.',
+        ta: 'என் வருமானத்தைப் பார்க்கவும். மொத்த தொகை.',
+        gu: 'મારી કમાણી જુઓ. રોકડ અને યુપીઆઈ કમાણી.',
+        bn: 'আমার মোট আয় দেখুন। নগদ ও ইউপিআই টাকা।',
+        en: 'View your total earnings and payment history.'
+      },
+      safety: {
+        mr: 'सुरक्षा नियम पहा. तार जाळू नका आणि काच फोडू नका.',
+        hi: 'सुरक्षा निर्देश देखें। तार जलाना सख्त मना है।',
+        te: 'రక్షణ మార్గదర్శకాలు చూడండి. వైర్లు కాల్చవద్దు.',
+        kn: 'ಸುರಕ್ಷತಾ ಮಾರ್ಗಸೂಚಿಗಳು. ವೈರ್‌ಗಳನ್ನು ಸುಡಬೇಡಿ.',
+        ta: 'பாதுகாப்பு விதிகளைப் பார்க்கவும். கம்பிகளை எரிக்க வேண்டாம்.',
+        gu: 'સુરક્ષા માર્ગદર્શિકા જુઓ. વાયર સળગાવશો નહીં.',
+        bn: 'সুরক্ষা নির্দেশাবলী দেখুন। তার পোড়াবেন না।',
+        en: 'View e-waste handling safety guidelines.'
+      }
+    };
+    return translations[key]?.[language] || translations[key]?.['en'] || '';
   };
 
   const handleSpeak = (e, key) => {
@@ -86,14 +110,10 @@ export const CollectorHome = ({ profile, language, onNavigate }) => {
             </div>
             <div>
               <h3 className="text-lg font-black tracking-wide">
-                {language === 'mr' ? 'ई-कचरा विका' : language === 'hi' ? 'ई-कचरा बेचें' : 'Sell E-Waste'}
+                {getText('sellEWaste', language)}
               </h3>
               <p className="text-xs text-emerald-100 font-medium">
-                {language === 'mr'
-                  ? 'फोटो काढा • वजन टाका • भाव मिळवा'
-                  : language === 'hi'
-                  ? 'फोटो लें • वज़न दर्ज करें • कीमत पाएं'
-                  : 'Photo → Weight → instant price quote'}
+                {getText('sellEWasteDesc', language)}
               </p>
             </div>
           </div>
@@ -120,10 +140,10 @@ export const CollectorHome = ({ profile, language, onNavigate }) => {
             </div>
             <div>
               <h3 className="text-base font-bold text-slate-900">
-                {language === 'mr' ? 'आजचे दर पहा' : language === 'hi' ? 'आज का भाव देखें' : 'Check Market Price'}
+                {getText('checkPrice', language)}
               </h3>
               <p className="text-xs text-slate-500 font-medium">
-                {language === 'mr' ? 'PCB ₹420/kg • कॉपर ₹520/kg' : language === 'hi' ? 'PCB ₹420/किग्रा • तांबा ₹520/किग्रा' : 'Live historical rate dataset'}
+                {getText('checkPriceDesc', language)}
               </p>
             </div>
           </div>
@@ -149,10 +169,10 @@ export const CollectorHome = ({ profile, language, onNavigate }) => {
             </div>
             <div>
               <h3 className="text-base font-bold text-slate-900">
-                {language === 'mr' ? 'अधिकृत रीसायकलर्स' : language === 'hi' ? 'अधिकृत रिसाइकिलर' : 'Authorized Recyclers'}
+                {getText('findRecycler', language)}
               </h3>
               <p className="text-xs text-slate-500 font-medium">
-                {language === 'mr' ? 'जवळचे प्रमाणित केंद्र • पिकअप' : language === 'hi' ? 'सरकारी मान्यता प्राप्त • पिकअप' : 'Verified MPCB certified buyers'}
+                {getText('findRecyclerDesc', language)}
               </p>
             </div>
           </div>
@@ -178,10 +198,10 @@ export const CollectorHome = ({ profile, language, onNavigate }) => {
             </div>
             <div>
               <h3 className="text-base font-bold text-slate-900">
-                {language === 'mr' ? 'माझे लॉट व पावती' : language === 'hi' ? 'मेरे लॉट और रसीद' : 'My Lots & Receipts'}
+                {getText('myLots', language)}
               </h3>
               <p className="text-xs text-slate-500 font-medium">
-                {language === 'mr' ? 'डिजिटल रसीद • डिलिव्हरी स्टेटस' : language === 'hi' ? 'डिजिटल रसीद • डिलीवरी स्थिति' : 'Digital traceability records'}
+                {getText('myLotsDesc', language)}
               </p>
             </div>
           </div>
@@ -207,10 +227,10 @@ export const CollectorHome = ({ profile, language, onNavigate }) => {
             </div>
             <div>
               <h3 className="text-base font-bold text-slate-900">
-                {language === 'mr' ? 'माझी एकूण कमाई' : language === 'hi' ? 'मेरी कुल कमाई' : 'My Earnings'}
+                {getText('myEarnings', language)}
               </h3>
               <p className="text-xs text-slate-500 font-medium">
-                {language === 'mr' ? 'नकद आणि UPI द्वारे मिळालेले पैसे' : language === 'hi' ? 'नकद और UPI द्वारा प्राप्त आय' : 'Cash & digital payment records'}
+                {getText('myEarningsDesc', language)}
               </p>
             </div>
           </div>
@@ -236,10 +256,10 @@ export const CollectorHome = ({ profile, language, onNavigate }) => {
             </div>
             <div>
               <h3 className="text-base font-bold text-red-700">
-                {language === 'mr' ? 'सुरक्षा निर्देश' : language === 'hi' ? 'सुरक्षा नियम' : 'Safety Rules'}
+                {getText('safetyRules', language)}
               </h3>
               <p className="text-xs text-slate-500 font-medium">
-                {language === 'mr' ? 'तार न जाळणे • बॅटरीची काळजी' : language === 'hi' ? 'तार मत जलाएं • जहरीले धुएं से बचाव' : 'Pictorial & voice safety cards'}
+                {getText('safetyRulesDesc', language)}
               </p>
             </div>
           </div>

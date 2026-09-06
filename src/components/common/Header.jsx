@@ -1,5 +1,5 @@
 import React from 'react';
-import { Smartphone, Building2, TrendingUp, Wifi, WifiOff, Volume2 } from 'lucide-react';
+import { Smartphone, Building2, TrendingUp, Database, Wifi, WifiOff, Volume2 } from 'lucide-react';
 import { syncEngine } from '../../services/syncEngine.js';
 
 export const Header = ({
@@ -66,6 +66,17 @@ export const Header = ({
               <TrendingUp className="w-4 h-4" />
               <span>Unit Economics</span>
             </button>
+            <button
+              onClick={() => setActiveTab('architecture')}
+              className={`flex items-center space-x-2 px-3.5 py-1.5 rounded-lg text-xs font-bold transition-all ${
+                activeTab === 'architecture'
+                  ? 'bg-emerald-600 text-white shadow-md shadow-emerald-600/30'
+                  : 'text-slate-600 hover:text-slate-900 hover:bg-slate-200/60'
+              }`}
+            >
+              <Database className="w-4 h-4" />
+              <span>System & Datasets</span>
+            </button>
           </nav>
 
           {/* Controls: Language & Network Toggle */}
@@ -78,9 +89,14 @@ export const Header = ({
                 onChange={e => setLanguage(e.target.value)}
                 className="bg-transparent text-slate-800 font-bold focus:outline-none cursor-pointer pr-1"
               >
-                <option value="mr">मराठी (Marathi)</option>
-                <option value="hi">हिंदी (Hindi)</option>
                 <option value="en">English</option>
+                <option value="hi">हिंदी (Hindi)</option>
+                <option value="mr">मराठी (Marathi)</option>
+                <option value="te">తెలుగు (Telugu)</option>
+                <option value="kn">ಕನ್ನಡ (Kannada)</option>
+                <option value="ta">தமிழ் (Tamil)</option>
+                <option value="gu">ગુજરાતી (Gujarati)</option>
+                <option value="bn">বাংলা (Bengali)</option>
               </select>
             </div>
 

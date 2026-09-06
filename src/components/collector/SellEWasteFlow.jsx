@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
-import { Camera, ArrowLeft, Sparkles, Check, ChevronRight, AlertTriangle, ShieldCheck, MapPin } from 'lucide-react';
+import React, { useState, useRef } from 'react';
+import { Camera, ArrowLeft, Sparkles, Check, ChevronRight, AlertTriangle, ShieldCheck, MapPin, Upload } from 'lucide-react';
+import confetti from 'canvas-confetti';
 import { INITIAL_MATERIALS } from '../../services/mockData.js';
 import { AIEngine } from '../../services/aiEngine.js';
 import { RecyclerMatcher } from '../../services/recyclerMatcher.js';
@@ -84,6 +85,15 @@ export const SellEWasteFlow = ({
     syncEngine.notify();
     setCreatedLot(newLot);
     onLotCreated(newLot);
+
+    try {
+      confetti({
+        particleCount: 100,
+        spread: 70,
+        origin: { y: 0.6 },
+      });
+    } catch {}
+
     setStep(5);
   };
 
