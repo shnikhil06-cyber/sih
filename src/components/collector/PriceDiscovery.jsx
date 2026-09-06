@@ -3,6 +3,7 @@ import { ArrowLeft, TrendingUp, Volume2, MapPin, Navigation, RefreshCw, Compass 
 import { INITIAL_PRICE_DATASET, INITIAL_MATERIALS } from '../../services/mockData.js';
 import { TTSService } from '../../services/ttsService.js';
 import { GeoService } from '../../services/geoService.js';
+import { getText } from '../../services/i18n.js';
 
 export const LOCAL_NEIGHBORHOOD_PRICES = [
   {
@@ -53,6 +54,10 @@ export const PriceDiscovery = ({ language, onBack }) => {
     trackingStatus: 'ACTIVE',
   });
   const [isLocating, setIsLocating] = useState(false);
+
+  const activeAreaObj = LOCAL_NEIGHBORHOOD_PRICES.find(l => l.area === selectedArea) || LOCAL_NEIGHBORHOOD_PRICES[0];
+  const selectedRecord = INITIAL_PRICE_DATASET.find(p => p.material === selectedMaterial) || INITIAL_PRICE_DATASET[0];
+  const matInfo = INITIAL_MATERIALS.find(m => m.id === selectedMaterial) || INITIAL_MATERIALS[0];
 
   const handleRefreshLocation = () => {
     setIsLocating(true);
