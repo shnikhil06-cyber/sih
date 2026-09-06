@@ -6,7 +6,7 @@ export class AIEngine {
     let confidence = 87;
 
     if (imageNameOrSeed) {
-      const lower = imageNameOrSeed.toLowerCase();
+      const lower = String(imageNameOrSeed).toLowerCase();
       if (lower.includes('cable') || lower.includes('wire')) {
         category = 'Cable';
         confidence = 92;
@@ -34,10 +34,14 @@ export class AIEngine {
       }
     }
 
+    const mat = INITIAL_MATERIALS.find(m => m.id === category) || INITIAL_MATERIALS[0];
+    const defaultSubCategory = mat.subCategories ? mat.subCategories[0] : 'Standard Grade';
+
     const isLowConfidence = confidence < 70;
 
     return {
       detectedCategory: category,
+      detectedSubCategory: defaultSubCategory,
       confidenceScore: confidence,
       isLowConfidence,
       alternativeSuggestions: [
@@ -79,7 +83,7 @@ export class AIEngine {
       maxEstimate,
       suggestedQuotedPrice,
       ratePerKg: Math.round(baseRate),
-      marketTrendNote: `${matInfo.nameEn} prevailing market index is currently ⬆️ rising in Pune region.`,
+      marketTrendNote: `${matInfo.nameEn} prevailing rate is currently ⬆️ rising in Pune region.`,
     };
   }
 
@@ -87,6 +91,10 @@ export class AIEngine {
     const valuation = this.calculateValuation(category, weightKg, 'Mixed');
     const expectedPrice = valuation.suggestedQuotedPrice;
     
+    if (!expectedPrice || expectedPrice === 0) {
+      return { isAnomaly: false, expectedPrice: 0, actualPrice: actualTotalPrice, deviationPercent: 0, severity: 'NORMAL', warningMessage: '' };
+    }
+
     const deviationPercent = Number((((expectedPrice - actualTotalPrice) / expectedPrice) * 100).toFixed(1));
 
     if (deviationPercent >= 20) {
@@ -96,7 +104,7 @@ export class AIEngine {
         actualPrice: actualTotalPrice,
         deviationPercent,
         severity: deviationPercent >= 50 ? 'CRITICAL' : 'WARNING',
-        warningMessage: `⚠️ Unusual transaction detected! Actual price (₹${actualTotalPrice.toLocaleString()}) is ${deviationPercent}% below the prevailing market value (₹${expectedPrice.toLocaleString()}). Potential unfair transaction.`,
+        warningMessage: `⚠️ Unusual price detected! Transaction realization (₹${actualTotalPrice.toLocaleString()}) is ${deviationPercent}% below market valuation index (₹${expectedPrice.toLocaleString()}). Potential unfair value realization.`,
       };
     }
 
@@ -106,7 +114,7 @@ export class AIEngine {
       actualPrice: actualTotalPrice,
       deviationPercent,
       severity: 'NORMAL',
-      warningMessage: '✓ Transaction price is within fair market range.',
+      warningMessage: '✓ Transaction price realization is within fair market range.',
     };
   }
 }

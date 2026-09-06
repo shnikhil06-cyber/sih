@@ -9,61 +9,31 @@ export const CollectorHome = ({ profile, language, onNavigate }) => {
       sell: {
         mr: 'ई-कचरा विका. फोटो काढा आणि उत्तम दर मिळवा.',
         hi: 'ई-कचरा बेचें। फोटो खींचें और सबसे अच्छी कीमत पाएं।',
-        te: 'ఈ-వేస్ట్ అమ్మండి. ఫోటో తీసి ఉత్తమ ధర పొందండి.',
-        kn: 'ಇ-ತ್ಯಾಜ್ಯ ಮಾರಿ. ಫೋಟೋ ತೆಗೆದು ಉತ್ತಮ ಬೆಲೆ ಪಡೆಯಿರಿ.',
-        ta: 'மின் கழிவுகளை விற்கவும். படம் எடுத்து சிறந்த விலை பெறவும்.',
-        gu: 'ઇ-કચરો વેચો. ફોટો પાડીને શ્રેષ્ઠ કિંમત મેળવો.',
-        bn: 'ই-বর্জ্য বিক্রি করুন। ছবি তুলুন এবং সেরা দাম পান।',
-        en: 'Sell E-Waste. Take photo and get best price.'
+        en: 'Sell E-Waste. Take photo and get best price quote.'
       },
       price: {
         mr: 'आजचे दर पहा. तांबे, सर्किट बोर्ड आणि बॅटरीचे सध्याचे भाव.',
         hi: 'आज का भाव देखें। तांबा, सर्किट बोर्ड और बैटरी की ताज़ा दरें।',
-        te: 'ఈరోజు ధరలు చూడండి. రాగి, సర్క్యూట్ బోర్డ్ తాజా రేట్లు.',
-        kn: 'ಇಂದಿನ ದರಗಳನ್ನು ಪರಿಶೀಲಿಸಿ. ತಾಮ್ರ, ಸರ್ಕ್ಯೂಟ್ ಬೋರ್ಡ್ ಬೆಲೆಗಳು.',
-        ta: 'இன்றைய விலையை சரிபார்க்கவும். தாமிரம் மற்றும் சர்க்யூட் போர்டு.',
-        gu: 'આજના ભાવ જુઓ. તાંબુ અને સર્કિટ બોર્ડના નવા દરો.',
-        bn: 'আজকের দাম দেখুন। তামা, সার্কিট বোর্ড এবং ব্যাটারির দর।',
         en: 'Check market prices for metals and e-waste.'
       },
       recyclers: {
         mr: 'अधिकृत रीसायकलर्स शोधा. मोफत पिकअप देणारे जवळचे केंद्र.',
         hi: 'अधिकृत रिसाइकिलर खोजें। मुफ्त पिकअप केंद्र।',
-        te: 'అధికారిక రీసైక్లర్లను కనుగొనండి. ఉచిత పికప్.',
-        kn: 'ಅಧಿಕೃತ ರಿಸೈಕ್ಲರ್‌ಗಳನ್ನು ಹುಡುಕಿ. ಉಚಿತ ಪಿಕ್ಅಪ್.',
-        ta: 'அங்கீகரிக்கப்பட்ட மறுசுழற்சியாளர்களைக் கண்டறியவும்.',
-        gu: 'અધિકૃત રિસાયકલર્સ શોધો. મફત પીકઅપ.',
-        bn: 'অনুমোদিত রিসাইক্লার খুঁজুন। বিনামূল্যে পিকআপ।',
         en: 'Find verified authorized recyclers near you.'
       },
       lots: {
         mr: 'माझे लॉट पहा. तुमचे जमा केलेले साहित्य आणि पोच पावती.',
         hi: 'मेरे लॉट देखें। आपकी डिजिटल रसीद और स्थिति।',
-        te: 'నా లాట్‌లు చూడండి. డిజిటల్ రసీదు మరియు స్థితి.',
-        kn: 'ನನ್ನ ಲಾಟ್‌ಗಳನ್ನು ವೀಕ್ಷಿಸಿ. ಡಿಜಿಟಲ್ ರಶೀದಿ.',
-        ta: 'என் லாக்டுகளைப் பார்க்கவும். டிஜிட்டல் ரசீது.',
-        gu: 'મારા લોટ જુઓ. ડિજિટલ રસીદ અને સ્થિતિ.',
-        bn: 'আমার লট দেখুন। ডিজিটাল রসিদ ও অবস্থা।',
-        en: 'View your recorded e-waste lots and receipts.'
+        en: 'View your recorded e-waste lots and traceability receipts.'
       },
       earnings: {
         mr: 'माझी कमाई पहा. आतापर्यंत मिळालेले सर्व पैसे.',
-        hi: 'मेरी कुल कमाई देखें। बैंक और नकद भुगतान।',
-        te: 'నా సంపాదన చూడండి. మొత్తం నగదు సేకరించబడింది.',
-        kn: 'ನನ್ನ ಗಳಿಕೆಯನ್ನು ವೀಕ್ಷಿಸಿ. ಒಟ್ಟು ಆದಾಯ.',
-        ta: 'என் வருமானத்தைப் பார்க்கவும். மொத்த தொகை.',
-        gu: 'મારી કમાણી જુઓ. રોકડ અને યુપીઆઈ કમાણી.',
-        bn: 'আমার মোট আয় দেখুন। নগদ ও ইউপিআই টাকা।',
+        hi: 'मेरी कुल कमाई देखें। बैंक और नकद भुगतान बही।',
         en: 'View your total earnings and payment history.'
       },
       safety: {
-        mr: 'सुरक्षा नियम पहा. तार जाळू नका आणि काच फोडू नका.',
-        hi: 'सुरक्षा निर्देश देखें। तार जलाना सख्त मना है।',
-        te: 'రక్షణ మార్గదర్శకాలు చూడండి. వైర్లు కాల్చవద్దు.',
-        kn: 'ಸುರಕ್ಷತಾ ಮಾರ್ಗಸೂಚಿಗಳು. ವೈರ್‌ಗಳನ್ನು ಸುಡಬೇಡಿ.',
-        ta: 'பாதுகாப்பு விதிகளைப் பார்க்கவும். கம்பிகளை எரிக்க வேண்டாம்.',
-        gu: 'સુરક્ષા માર્ગદર્શિકા જુઓ. વાયર સળગાવશો નહીં.',
-        bn: 'সুরক্ষা নির্দেশাবলী দেখুন। তার পোড়াবেন না।',
+        mr: 'सुरक्षा नियम पहा. तार जाळू नका आणि ॲसिड वापरू नका.',
+        hi: 'सुरक्षा निर्देश देखें। तार जलाना और तेज़ाब इस्तेमाल करना मना है।',
         en: 'View e-waste handling safety guidelines.'
       }
     };
@@ -77,7 +47,7 @@ export const CollectorHome = ({ profile, language, onNavigate }) => {
 
   return (
     <div className="p-4 space-y-4 pb-12 bg-slate-50 min-h-full">
-      {/* Collector Profile Card */}
+      {/* Collector Profile Header */}
       <div className="bg-gradient-to-r from-emerald-700 to-teal-800 text-white p-4 rounded-2xl shadow-lg flex items-center justify-between">
         <div className="flex items-center space-x-3">
           <div className="w-12 h-12 rounded-full bg-white/20 backdrop-blur-md border border-white/30 flex items-center justify-center text-xl shadow-inner">
@@ -92,12 +62,14 @@ export const CollectorHome = ({ profile, language, onNavigate }) => {
           </div>
         </div>
         <div className="text-right">
-          <span className="text-[10px] uppercase font-extrabold text-emerald-200 block tracking-wider">Total Realized</span>
+          <span className="text-[10px] uppercase font-extrabold text-emerald-200 block tracking-wider">
+            {language === 'mr' ? 'एकूण कमाई' : language === 'hi' ? 'कुल आय' : 'Total Realized'}
+          </span>
           <span className="text-lg font-black text-white">₹{profile.total_earnings.toLocaleString()}</span>
         </div>
       </div>
 
-      {/* Grid of 6 Large Touch Targets for Low Literacy */}
+      {/* Grid of 6 Main Touch Targets for Low Literacy */}
       <div className="grid grid-cols-1 gap-3">
         {/* 1. Sell E-Waste */}
         <div
@@ -278,7 +250,13 @@ export const CollectorHome = ({ profile, language, onNavigate }) => {
       {/* Trust Banner Footer */}
       <div className="p-3 bg-white rounded-xl border border-slate-200 flex items-center justify-center space-x-2 text-xs text-slate-600 shadow-xs">
         <ShieldCheck className="w-4 h-4 text-emerald-600" />
-        <span>Authorized Channel Guarantee: Up to +20% higher earnings</span>
+        <span>
+          {language === 'mr'
+            ? 'अधिकृत रीसायकलर्सचे गॅरंटीड दर: +२०% पर्यंत जास्त कमाई'
+            : language === 'hi'
+            ? 'सरकारी मान्यता प्राप्त रिसाइकिलर: +२०% तक अधिक आय'
+            : 'Authorized Channel Guarantee: Up to +20% higher earnings'}
+        </span>
       </div>
     </div>
   );

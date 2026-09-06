@@ -25,7 +25,7 @@ export const Header = ({
             </div>
             <div>
               <h1 className="text-lg font-black text-slate-900 leading-tight">
-                पुनर्ज्योति PunarJyoti
+                Kabadiwala Connect
               </h1>
               <p className="text-xs text-slate-500 font-medium">Formal E-Waste Digital Traceability Bridge</p>
             </div>
@@ -79,9 +79,9 @@ export const Header = ({
             </button>
           </nav>
 
-          {/* Controls: Language & Network Toggle */}
+          {/* Controls: Vernacular Language Selector & Network Toggle */}
           <div className="flex items-center space-x-2">
-            {/* Language Selector */}
+            {/* Vernacular Language Selector */}
             <div className="flex items-center bg-slate-100 rounded-lg p-1 border border-slate-200 text-xs">
               <Volume2 className="w-3.5 h-3.5 text-slate-500 ml-1 mr-1" />
               <select
@@ -92,11 +92,6 @@ export const Header = ({
                 <option value="en">English</option>
                 <option value="hi">हिंदी (Hindi)</option>
                 <option value="mr">मराठी (Marathi)</option>
-                <option value="te">తెలుగు (Telugu)</option>
-                <option value="kn">ಕನ್ನಡ (Kannada)</option>
-                <option value="ta">தமிழ் (Tamil)</option>
-                <option value="gu">ગુજરાતી (Gujarati)</option>
-                <option value="bn">বাংলা (Bengali)</option>
               </select>
             </div>
 

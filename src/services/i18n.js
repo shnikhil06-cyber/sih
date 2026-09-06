@@ -1,149 +1,214 @@
 export const UI_TEXT = {
-  // 1. Collector Home
-  sellEWaste: {
-    mr: 'ई-कचरा विका',
-    hi: 'ई-कचरा बेचें',
-    te: 'ఈ-వేస్ట్ అమ్మండి',
-    kn: 'ಇ-ತ್ಯಾಜ್ಯ ಮಾರಿ',
-    ta: 'மின் கழிவுகளை விற்கவும்',
-    gu: 'ઇ-કચરો વેચો',
-    bn: 'ই-বর্জ্য বিক্রি করুন',
-    en: 'Sell E-Waste',
-  },
-  sellEWasteDesc: {
-    mr: 'फोटो काढा • वजन टाका • भाव मिळवा',
-    hi: 'फोटो लें • वज़न दर्ज करें • कीमत पाएं',
-    te: 'ఫోటో తీయండి • బరువు నమోదు • ధర పొందండి',
-    kn: 'ಫೋಟೋ ತೆಗೆಯಿರಿ • ತೂಕ ನಮೂದಿಸಿ • ಬೆಲೆ ಪಡೆಯಿರಿ',
-    ta: 'படம் எடுக்கவும் • எடை உள்ளிடவும் • விலை பெறவும்',
-    gu: 'ફોટો લો • વજન દાખલ કરો • કિંમત મેળવો',
-    bn: 'ছবি তুলুন • ওজন দিন • দাম পান',
-    en: 'Photo → Weight → instant price quote',
-  },
-  checkPrice: {
-    mr: 'आजचे दर पहा',
-    hi: 'आज का भाव देखें',
-    te: 'ఈరోజు ధరలు చూడండి',
-    kn: 'ಇಂದಿನ ದರಗಳನ್ನು ಪರಿಶೀಲಿಸಿ',
-    ta: 'இன்றைய விலையைப் பார்க்கவும்',
-    gu: 'આજના ભાવ જુઓ',
-    bn: 'আজকের দাম দেখুন',
-    en: 'Check Market Price',
-  },
-  checkPriceDesc: {
-    mr: 'PCB ₹420/kg • कॉपर ₹520/kg',
-    hi: 'PCB ₹420/किग्रा • तांबा ₹520/किग्रा',
-    te: 'PCB ₹420/కేజీ • రాగి ₹520/కేజీ',
-    kn: 'PCB ₹420/ಕೆಜಿ • ತಾಮ್ರ ₹520/ಕೆಜಿ',
-    ta: 'PCB ₹420/கிலோ • தாமிரம் ₹520/கிலோ',
-    gu: 'PCB ₹420/કિલો • તાંબુ ₹520/કિલો',
-    bn: 'PCB ₹420/কেজি • তামা ₹520/কেজি',
-    en: 'Live historical rate dataset',
-  },
-  findRecycler: {
-    mr: 'अधिकृत रीसायकलर्स',
-    hi: 'अधिकृत रिसाइकिलर',
-    te: 'అధికారిక రీసైక్లర్లు',
-    kn: 'ಅಧಿಕೃತ ರಿಸೈಕ್ಲರ್‌ಗಳು',
-    ta: 'அங்கீகரிக்கப்பட்ட மறுசுழற்சியாளர்கள்',
-    gu: 'અધિકૃત રિસાયકલર્સ',
-    bn: 'অনুমোদিত রিসাইক্লার',
-    en: 'Authorized Recyclers',
-  },
-  findRecyclerDesc: {
-    mr: 'जवळचे प्रमाणित केंद्र • पिकअप',
-    hi: 'सरकारी मान्यता प्राप्त • पिकअप',
-    te: 'సమీప ధృవీకరించబడిన కేంద్రాలు • పికప్',
-    kn: 'ಸಮೀಪದ ಅಧಿಕೃತ ಕೇಂದ್ರಗಳು • ಪಿಕ್‌ಅಪ್',
-    ta: 'அருகிலுள்ள மையங்கள் • பிக்கப்',
-    gu: 'નજીકના પ્રમાણિત કેન્દ્રો • પીકઅપ',
-    bn: 'নিকটবর্তী নিবন্ধিত কেন্দ্র • পিকআপ',
-    en: 'Verified MPCB certified buyers',
-  },
-  myLots: {
-    mr: 'माझे लॉट व पावती',
-    hi: 'मेरे लॉट और रसीद',
-    te: 'నా లాట్‌లు & రసీదులు',
-    kn: 'ನನ್ನ ಲಾಟ್‌ಗಳು ಮತ್ತು ರಶೀದಿ',
-    ta: 'என் லாக்டுகள் & ரசீது',
-    gu: 'મારા લોટ અને રસીદ',
-    bn: 'আমার লট ও রসিদ',
-    en: 'My Lots & Receipts',
-  },
-  myLotsDesc: {
-    mr: 'डिजिटल रसीद • डिलिव्हरी स्टेटस',
-    hi: 'डिजिटल रसीद • डिलीवरी स्थिति',
-    te: 'డిజిటల్ రసీదు • స్థితి',
-    kn: 'ಡಿಜಿಟಲ್ ರಶೀದಿ • ಸ್ಥಿತಿ',
-    ta: 'டிஜிட்டல் ரசீது • நிலை',
-    gu: 'ડિજિટલ રસીદ • સ્થિતિ',
-    bn: 'ডিজিটাল রসিদ • অবস্থা',
-    en: 'Digital traceability records',
-  },
-  myEarnings: {
-    mr: 'माझी एकूण कमाई',
-    hi: 'मेरी कुल कमाई',
-    te: 'నా మొత్తం సంపాదన',
-    kn: 'ನನ್ನ ಒಟ್ಟು ಗಳಿಕೆ',
-    ta: 'என் மொத்த வருமானம்',
-    gu: 'મારી કુલ કમાણી',
-    bn: 'আমার মোট আয়',
-    en: 'My Earnings',
-  },
-  myEarningsDesc: {
-    mr: 'नकद आणि UPI द्वारे मिळालेले पैसे',
-    hi: 'नकद और UPI द्वारा प्राप्त आय',
-    te: 'నగదు & యుపిఐ ఆదాయం',
-    kn: 'ನಗದು ಮತ್ತು ಯುಪಿಐ ಆದಾಯ',
-    ta: 'ரொக்கம் மற்றும் யுபிஐ வருமானம்',
-    gu: 'રોકડ અને યુપીઆઈ કમાણી',
-    bn: 'নগদ ও ইউপিআই প্রাপ্ত টাকা',
-    en: 'Cash & digital payment records',
-  },
-  safetyRules: {
-    mr: 'सुरक्षा निर्देश',
-    hi: 'सुरक्षा नियम',
-    te: 'రక్షణ మార్గదర్శకాలు',
-    kn: 'ಸುರಕ್ಷತಾ ನಿಯಮಗಳು',
-    ta: 'பாதுகாப்பு விதிகள்',
-    gu: 'સુરક્ષા માર્ગદર્શિકા',
-    bn: 'সুরক্ষা নির্দেশাবলী',
-    en: 'Safety Rules',
-  },
-  safetyRulesDesc: {
-    mr: 'तार न जाळणे • बॅटरीची काळजी',
-    hi: 'तार मत जलाएं • जहरीले धुएं से बचाव',
-    te: 'వైర్లు కాల్చవద్దు • బ్యాటరీ జాగ్రత్త',
-    kn: 'ವೈರ್ ಸುಡಬೇಡಿ • ಬ್ಯಾಟರಿ ಸುರಕ್ಷತೆ',
-    ta: 'கம்பிகளை எரிக்க வேண்டாம்',
-    gu: 'વાયર સળગાવશો નહીં • બેટરી સુરક્ષા',
-    bn: 'তার পোড়াবেন না • ব্যাটারি সুরক্ষা',
-    en: 'Pictorial & voice safety cards',
-  },
-
-  // Navigation & Buttons
+  // Common Actions & Navigation
   back: {
-    mr: 'मागे',
-    hi: 'वापस',
-    te: 'వెనుకకు',
-    kn: 'ಹಿಂದೆ',
-    ta: 'பின்னால்',
-    gu: 'પાછા',
-    bn: 'ফিরে যান',
     en: 'Back',
+    hi: 'वापस जाएं',
+    mr: 'मागे जा',
   },
   home: {
-    mr: 'मुख्य पृष्ठ',
-    hi: 'होम',
-    te: 'హోమ్',
-    kn: 'ಮುಖಪುಟ',
-    ta: 'முகப்பு',
-    gu: 'હોમ',
-    bn: 'হোম',
     en: 'Home',
+    hi: 'मुख्य पृष्ठ',
+    mr: 'मुख्य पृष्ठ',
+  },
+  step: {
+    en: 'Step',
+    hi: 'चरण',
+    mr: 'टप्पा',
+  },
+  of: {
+    en: 'of',
+    hi: 'का',
+    mr: 'पैकी',
+  },
+  cancel: {
+    en: 'Cancel',
+    hi: 'रद्द करें',
+    mr: 'रद्द करा',
+  },
+  confirm: {
+    en: 'Confirm',
+    hi: 'पुष्टि करें',
+    mr: 'निश्चित करा',
+  },
+  save: {
+    en: 'Save',
+    hi: 'सहेजें',
+    mr: 'साठवा',
+  },
+
+  // 1. Collector Home Cards
+  sellEWaste: {
+    en: 'Sell E-Waste',
+    hi: 'ई-कचरा बेचें',
+    mr: 'ई-कचरा विका',
+  },
+  sellEWasteDesc: {
+    en: 'Photo → Weight → Instant Price Quote',
+    hi: 'फोटो लें • वज़न दर्ज करें • तुरंत कीमत पाएं',
+    mr: 'फोटो काढा • वजन टाका • त्वरित भाव मिळवा',
+  },
+  checkPrice: {
+    en: 'Check Market Price',
+    hi: 'आज का भाव देखें',
+    mr: 'आजचे दर पहा',
+  },
+  checkPriceDesc: {
+    en: 'Live regional price rates & 7-day trends',
+    hi: 'ताज़ा बाज़ार दर और 7-दिन का रुझान',
+    mr: 'थेट बाजार भाव आणि ७ दिवसांचे ट्रेंड',
+  },
+  findRecycler: {
+    en: 'Authorized Recyclers',
+    hi: 'अधिकृत रिसाइकिलर',
+    mr: 'अधिकृत रीसायकलर्स',
+  },
+  findRecyclerDesc: {
+    en: 'MPCB certified facilities & pickup service',
+    hi: 'सरकारी मान्यता प्राप्त केंद्र • पिकअप सेवा',
+    mr: 'प्रमाणित सरकारी केंद्र • मोफत पिकअप',
+  },
+  myLots: {
+    en: 'My Lots & Traceability',
+    hi: 'मेरे लॉट और ट्रैसबिलिटी',
+    mr: 'माझे लॉट व ट्रेसॅबिलिटी',
+  },
+  myLotsDesc: {
+    en: 'Digital receipts & end-to-end status timeline',
+    hi: 'डिजिटल रसीद • डिलीवरी और हैंडओवर स्थिति',
+    mr: 'डिजिटल रसीद • डिलिव्हरी आणि हँडओव्हर स्टेटस',
+  },
+  myEarnings: {
+    en: 'My Earnings',
+    hi: 'मेरी कुल कमाई',
+    mr: 'माझी एकूण कमाई',
+  },
+  myEarningsDesc: {
+    en: 'Cash, UPI & Bank transfer history ledger',
+    hi: 'नकद, UPI और बैंक ट्रांसफर भुगतान बही',
+    mr: 'नकद आणि UPI द्वारे मिळालेल्या पैशांचा हिशोब',
+  },
+  safetyRules: {
+    en: 'Safety Rules',
+    hi: 'सुरक्षा नियम व मार्गदर्शन',
+    mr: 'सुरक्षा नियम व मार्गदर्शन',
+  },
+  safetyRulesDesc: {
+    en: 'Pictorial & audio rules (wires, batteries, acid)',
+    hi: 'चित्र और ऑडियो नियम (तार, बैटरी, एसिड लेचिंग)',
+    mr: 'चित्र आणि ऑडिओ नियम (तार, बॅटरी, ॲसिड लीचिंग)',
+  },
+
+  // 2. Sell E-Waste Wizard
+  step1Title: {
+    en: '1. Photograph E-Waste',
+    hi: '१. ई-कचरे का फोटो लें',
+    mr: '१. ई-कचऱ्याचा फोटो काढा',
+  },
+  step1Subtitle: {
+    en: 'Take or upload a clear photo for AI classification.',
+    hi: 'एआई वर्गीकरण के लिए स्पष्ट फोटो लें या अपलोड करें।',
+    mr: 'एआय वर्गीकरणासाठी स्पष्ट फोटो काढा किंवा अपलोड करा.',
+  },
+  openCamera: {
+    en: 'Take Live Photo / Upload File',
+    hi: 'कैमरा खोलें / फोटो अपलोड करें',
+    mr: 'कॅमेरा उघडा / फोटो अपलोड करा',
+  },
+  orSelectSample: {
+    en: 'Or tap a sample material image:',
+    hi: 'या नीचे दिए गए सैंपल फोटो पर टैप करें:',
+    mr: 'किंवा खालील सॅम्पल फोटोवर टॅप करा:',
+  },
+  
+  step2Title: {
+    en: '2. Confirm Material Category',
+    hi: '२. सामग्री श्रेणी की पुष्टि करें',
+    mr: '२. साहित्याची वर्गवारी निश्चित करा',
+  },
+  aiOutput: {
+    en: 'AI Vision Classification Result',
+    hi: 'एआई विज़न वर्गीकरण परिणाम',
+    mr: 'एआय व्हिजन वर्गवारी निकाल',
+  },
+  confidence: {
+    en: 'Confidence',
+    hi: 'सटीकता',
+    mr: 'अचूकता',
+  },
+  selectSubCategory: {
+    en: 'Select Sub-Category:',
+    hi: 'उप-श्रेणी चुनें:',
+    mr: 'उप-वर्ग निवडा:',
+  },
+
+  step3Title: {
+    en: '3. Enter Weight & Condition',
+    hi: '३. वज़न और स्थिति दर्ज करें',
+    mr: '३. वजन आणि स्थिती टाका',
+  },
+  weightLabel: {
+    en: 'Approximate Weight (kg)',
+    hi: 'अनुमानित वज़न (किग्रा)',
+    mr: 'अंदाजे वजन (किग्रा)',
+  },
+  conditionGrade: {
+    en: 'Material Condition Grade:',
+    hi: 'सामग्री की स्थिति:',
+    mr: 'साहित्याची स्थिती:',
+  },
+
+  step4Title: {
+    en: '4. AI Valuation & Recycler Match',
+    hi: '४. मूल्य अनुमान और रिसाइकिलर चयन',
+    mr: '४. मूल्य अंदाज आणि रीसायकलर निवड',
+  },
+  estimatedValuation: {
+    en: 'Estimated Lot Realization',
+    hi: 'अनुमानित लॉट मूल्य',
+    mr: 'अंदाजे लॉट मूल्य',
+  },
+  matchedRecyclers: {
+    en: 'Nearby Authorized Recyclers:',
+    hi: 'पास के अधिकृत रिसाइकिलर:',
+    mr: 'जवळचे अधिकृत रीसायकलर्स:',
+  },
+  createLotBtn: {
+    en: 'CONFIRM RECYCLER & CREATE LOT',
+    hi: 'रिसाइकिलर चुनें और लॉट बनाएं',
+    mr: 'रीसायकलर निवडा आणि लॉट तयार करा',
+  },
+
+  step5Title: {
+    en: 'Lot Created Successfully!',
+    hi: 'लॉट सफलतापूर्वक बन गया!',
+    mr: 'लॉट यशस्वीरित्या तयार झाला!',
+  },
+  returnHome: {
+    en: 'Return to Home',
+    hi: 'मुख्य पृष्ठ पर वापस जाएं',
+    mr: 'मुख्य पृष्ठावर जा',
+  },
+
+  // Traceability Timeline Statuses
+  timeline: {
+    lotCreated: { en: 'Lot Created', hi: 'लॉट बनाया गया', mr: 'लॉट तयार केला' },
+    priceQuoted: { en: 'Price Quoted', hi: 'कीमत तय', mr: 'दर निश्चित' },
+    recyclerSelected: { en: 'Recycler Selected', hi: 'रिसाइकिलर चुना गया', mr: 'रीसायकलर निवडला' },
+    pickupScheduled: { en: 'Pickup Scheduled', hi: 'पिकअप शेड्यूल', mr: 'पिकअप शेड्यूल' },
+    handoverDone: { en: 'Handover Recorded', hi: 'हैंडओवर दर्ज', mr: 'हँडओव्हर नोंदवले' },
+    recyclerConfirmed: { en: 'Recycler Confirmed', hi: 'रिसाइकिलर द्वारा पुष्ट', mr: 'रीसायकलरने पुष्टी केली' },
+    paymentCompleted: { en: 'Payment Completed', hi: 'भुगतान पूरा हुआ', mr: 'पैसे जमा झाले' },
+    recycledFinished: { en: 'Recycling Completed', hi: 'रीसाइक्लिंग पूर्ण', mr: 'रीसायकलिंग पूर्ण' },
   },
 };
 
 export const getText = (key, lang = 'en') => {
-  return UI_TEXT[key]?.[lang] || UI_TEXT[key]?.['en'] || '';
+  if (!key) return '';
+  const parts = key.split('.');
+  let current = UI_TEXT;
+  for (const p of parts) {
+    if (!current[p]) return UI_TEXT[parts[0]]?.[lang] || UI_TEXT[parts[0]]?.['en'] || key;
+    current = current[p];
+  }
+  return current[lang] || current['en'] || key;
 };

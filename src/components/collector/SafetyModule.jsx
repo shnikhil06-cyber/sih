@@ -2,6 +2,7 @@ import React from 'react';
 import { ArrowLeft, ShieldAlert, Volume2, Check, X } from 'lucide-react';
 import { SAFETY_GUIDELINES } from '../../services/mockData.js';
 import { TTSService } from '../../services/ttsService.js';
+import { getText } from '../../services/i18n.js';
 
 export const SafetyModule = ({ language, onBack }) => {
   const handleSpeakSafety = (guideline) => {
@@ -22,17 +23,17 @@ export const SafetyModule = ({ language, onBack }) => {
           className="flex items-center space-x-1.5 text-slate-600 hover:text-slate-900 text-xs font-bold py-1 px-2.5 rounded-lg bg-slate-200/70"
         >
           <ArrowLeft className="w-4 h-4" />
-          <span>Back</span>
+          <span>{getText('back', language)}</span>
         </button>
 
         <h2 className="text-sm font-bold text-red-700 flex items-center space-x-1">
           <ShieldAlert className="w-4 h-4 text-red-600" />
-          <span>Pictorial & Voice Safety Cards</span>
+          <span>{getText('safetyRules', language)}</span>
         </h2>
       </div>
 
       <p className="text-xs text-slate-500 font-medium">
-        Important health and environmental safety rules for e-waste collectors. Tap 🔊 for audio instructions.
+        Important health, environmental, and occupational safety rules. Tap 🔊 for voice readout in Hindi/Marathi.
       </p>
 
       {/* Safety Cards */}
@@ -59,7 +60,7 @@ export const SafetyModule = ({ language, onBack }) => {
                   <div>
                     <h3 className="font-extrabold text-slate-900 text-base leading-tight">{title}</h3>
                     <span className="text-[10px] font-black uppercase tracking-wider text-red-600">
-                      ⚠️ Hazard Warning: {item.material}
+                      ⚠️ Hazard Focus: {item.material}
                     </span>
                   </div>
                 </div>
@@ -79,7 +80,7 @@ export const SafetyModule = ({ language, onBack }) => {
                 <div className="bg-emerald-50 p-2.5 rounded-xl border border-emerald-200 space-y-1">
                   <span className="font-bold text-emerald-800 flex items-center space-x-1">
                     <Check className="w-4 h-4 text-emerald-600" />
-                    <span>क्या करें (Do):</span>
+                    <span>{language === 'mr' ? 'काय करावे (Do):' : language === 'hi' ? 'क्या करें (Do):' : 'Safe Practice (Do):'}</span>
                   </span>
                   <ul className="list-disc list-inside text-slate-700 text-[11px] space-y-0.5 font-medium">
                     {item.doList.map((d, i) => (
@@ -92,7 +93,7 @@ export const SafetyModule = ({ language, onBack }) => {
                 <div className="bg-red-50 p-2.5 rounded-xl border border-red-200 space-y-1">
                   <span className="font-bold text-red-800 flex items-center space-x-1">
                     <X className="w-4 h-4 text-red-600" />
-                    <span>क्या न करें (Don't):</span>
+                    <span>{language === 'mr' ? 'काय करू नये (Don’t):' : language === 'hi' ? 'क्या न करें (Don’t):' : 'Unsafe Practice (Don’t):'}</span>
                   </span>
                   <ul className="list-disc list-inside text-slate-700 text-[11px] space-y-0.5 font-medium">
                     {item.dontList.map((d, i) => (

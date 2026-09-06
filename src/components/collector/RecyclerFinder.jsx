@@ -1,8 +1,26 @@
-import React from 'react';
-import { ArrowLeft, ShieldCheck, MapPin, Phone, CheckCircle, XCircle } from 'lucide-react';
+import React, { useState } from 'react';
+import { ArrowLeft, ShieldCheck, MapPin, Phone, CheckCircle, XCircle, Navigation, RefreshCw } from 'lucide-react';
 import { VERIFIED_RECYCLERS_DATASET } from '../../services/mockData.js';
+import { getText } from '../../services/i18n.js';
 
-export const RecyclerFinder = ({ onBack }) => {
+import { GeoService } from '../../services/geoService.js';
+
+export const RecyclerFinder = ({ language, onBack }) => {
+  const [collectorGps, setCollectorGps] = useState('Detecting Live GPS...');
+  const [isLocating, setIsLocating] = useState(false);
+
+  const handleRefreshGps = () => {
+    setIsLocating(true);
+    GeoService.getCurrentLocation().then(loc => {
+      setCollectorGps(loc.fullString);
+      setIsLocating(false);
+    });
+  };
+
+  React.useEffect(() => {
+    handleRefreshGps();
+  }, []);
+
   return (
     <div className="p-4 space-y-4 pb-16 bg-slate-50 min-h-full">
       {/* Header */}
@@ -12,17 +30,45 @@ export const RecyclerFinder = ({ onBack }) => {
           className="flex items-center space-x-1.5 text-slate-600 hover:text-slate-900 text-xs font-bold py-1 px-2.5 rounded-lg bg-slate-200/70"
         >
           <ArrowLeft className="w-4 h-4" />
-          <span>Back</span>
+          <span>{getText('back', language)}</span>
         </button>
 
         <h2 className="text-sm font-bold text-teal-800 flex items-center space-x-1">
           <ShieldCheck className="w-4 h-4 text-teal-600" />
-          <span>Verified Recycler Database</span>
+          <span>{getText('findRecycler', language)}</span>
         </h2>
       </div>
 
+      {/* Live Location Tracking Bar */}
+      <div className="bg-slate-900 text-white p-3.5 rounded-2xl flex items-center justify-between text-xs shadow-md">
+        <div className="flex items-center space-x-2">
+          <span className="flex h-2.5 w-2.5 relative">
+            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+            <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500"></span>
+          </span>
+          <div>
+            <span className="font-extrabold text-emerald-400 block uppercase text-[10px] tracking-wider">
+              Live Location Tracked
+            </span>
+            <span className="font-mono font-bold text-slate-200 text-[11px] flex items-center space-x-1">
+              <Navigation className="w-3 h-3 text-emerald-400 inline" />
+              <span>{collectorGps}</span>
+            </span>
+          </div>
+        </div>
+
+        <button
+          onClick={handleRefreshGps}
+          disabled={isLocating}
+          className="p-2 rounded-lg bg-white/10 hover:bg-white/20 text-white transition-all border border-white/10"
+          title="Refresh live GPS location"
+        >
+          <RefreshCw className={`w-3.5 h-3.5 ${isLocating ? 'animate-spin' : ''}`} />
+        </button>
+      </div>
+
       <p className="text-xs text-slate-500 font-medium">
-        Authorized MPCB registered recyclers operating in Pune & Maharashtra regions.
+        Nearby MPCB authorized recyclers matched against your live location with real-time local rate quotes.
       </p>
 
       {/* Recyclers List */}
@@ -44,7 +90,7 @@ export const RecyclerFinder = ({ onBack }) => {
                 </div>
                 <p className="text-xs text-slate-500 font-medium flex items-center space-x-1 mt-1">
                   <MapPin className="w-3.5 h-3.5 text-slate-400" />
-                  <span>{rec.location} • {rec.distanceKm} km</span>
+                  <span>{rec.location} • <strong className="text-emerald-700">{rec.distanceKm} km</strong> from live GPS</span>
                 </p>
               </div>
 
@@ -63,16 +109,28 @@ export const RecyclerFinder = ({ onBack }) => {
                 <span className="font-mono text-slate-800 font-bold">{rec.authorization_details}</span>
               </div>
               <div className="flex justify-between text-slate-500">
+                <span>Local Offer Premium:</span>
+                <span className="font-bold text-emerald-700">
+                  {rec.offered_rate_multiplier >= 1.0
+                    ? `+${((rec.offered_rate_multiplier - 1) * 100).toFixed(1)}% Local Premium Rate`
+                    : `-${((1 - rec.offered_rate_multiplier) * 100).toFixed(1)}% Discounted Rate`}
+                </span>
+              </div>
+              <div className="flex justify-between text-slate-500">
                 <span>Materials Accepted:</span>
                 <span className="font-bold text-teal-800">{rec.materials_accepted.join(', ')}</span>
               </div>
             </div>
 
             <div className="flex items-center justify-between text-xs pt-2 border-t border-slate-100">
-              <div className="flex items-center space-x-2">
+              <a
+                href={`tel:${rec.contact}`}
+                className="flex items-center space-x-1.5 px-3 py-1.5 rounded-lg bg-emerald-50 text-emerald-800 border border-emerald-300 font-mono font-bold hover:bg-emerald-100 transition-colors"
+              >
                 <Phone className="w-3.5 h-3.5 text-emerald-600" />
-                <span className="text-slate-700 font-mono font-bold">{rec.contact}</span>
-              </div>
+                <span>{rec.contact}</span>
+              </a>
+
               <div className="flex items-center space-x-1 text-emerald-700 font-bold">
                 <CheckCircle className="w-3.5 h-3.5" />
                 <span>{rec.pickup_available ? 'Pickup Provided' : 'Self Transport'}</span>

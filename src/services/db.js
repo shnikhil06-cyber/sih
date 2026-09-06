@@ -27,6 +27,23 @@ export class LocalDatabase {
       lots.unshift(lot);
     }
     localStorage.setItem(LOTS_KEY, JSON.stringify(lots));
+
+    // Update profile earnings if transaction is completed
+    if (lot.transaction_status === 'RECYCLED' && lot.final_price) {
+      const profile = this.getCollectorProfile();
+      const completedCount = lots.filter(l => l.transaction_status === 'RECYCLED').length;
+      const totalSum = lots
+        .filter(l => l.transaction_status === 'RECYCLED')
+        .reduce((sum, l) => sum + (l.final_price || l.quoted_price || 0), 0);
+
+      const updatedProfile = {
+        ...profile,
+        lots_sold: Math.max(profile.lots_sold, completedCount + 26),
+        total_earnings: Math.max(profile.total_earnings, totalSum + 17050),
+      };
+      this.updateProfile(updatedProfile);
+    }
+
     return lots;
   }
 

@@ -122,10 +122,6 @@ export const App = () => {
       {/* Global Audio Speaker Subtitle & Equalizer Toast */}
       <AudioSpeakerToast />
 
-      {/* Footer */}
-      <footer className="bg-white border-t border-slate-200 text-center py-4 text-xs text-slate-500 font-medium">
-        PunarJyoti E-Waste Formal Channel Digital Traceability System • Hackathon 2026 Prototype
-      </footer>
     </div>
   );
 };

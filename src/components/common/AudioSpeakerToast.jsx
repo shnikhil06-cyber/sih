@@ -1,6 +1,4 @@
-import React, { useState, useEffect } from 'react';
-import { Volume2, Square } from 'lucide-react';
-import { TTSService } from '../../services/ttsService.js';
+import React from 'react';
 
 export const AudioSpeakerToast = () => {
   return null;

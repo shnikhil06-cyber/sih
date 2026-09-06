@@ -23,7 +23,7 @@ export const ReceiptModal = ({ lot, onClose }) => {
           <h2 className="text-xl font-black tracking-wide text-emerald-800">
             E-WASTE HANDOVER RECEIPT
           </h2>
-          <p className="text-xs text-slate-500 font-medium">Official Formal Channel Traceability Certificate</p>
+          <p className="text-xs text-slate-500 font-medium">Official Formal Channel Digital Traceability Certificate</p>
         </div>
 
         {/* Receipt Content Card */}
@@ -33,17 +33,26 @@ export const ReceiptModal = ({ lot, onClose }) => {
             <span className="font-bold text-emerald-700">{lot.lot_id}</span>
           </div>
 
+          {lot.handover_ref && (
+            <div className="flex justify-between items-center text-slate-500 text-xs pb-2 border-b border-slate-200">
+              <span>Handover Ref:</span>
+              <span className="font-bold text-teal-800">{lot.handover_ref}</span>
+            </div>
+          )}
+
           <div className="grid grid-cols-2 gap-2 text-xs">
             <div>
-              <span className="text-slate-500 block">Collector:</span>
+              <span className="text-slate-500 block">Collector ID:</span>
               <span className="font-bold text-slate-800">{lot.collector_id}</span>
             </div>
             <div>
-              <span className="text-slate-500 block">Material:</span>
-              <span className="font-bold text-amber-700">{lot.material}</span>
+              <span className="text-slate-500 block">Material & Sub:</span>
+              <span className="font-bold text-amber-700 truncate block">
+                {lot.material} {lot.sub_category ? `(${lot.sub_category})` : ''}
+              </span>
             </div>
             <div>
-              <span className="text-slate-500 block">Weight:</span>
+              <span className="text-slate-500 block">Verified Weight:</span>
               <span className="font-bold text-slate-900">{lot.verified_weight_kg || lot.weight_kg} kg</span>
             </div>
             <div>
@@ -77,7 +86,7 @@ export const ReceiptModal = ({ lot, onClose }) => {
               </span>
             </div>
             <div>
-              <span className="text-slate-500 block">Payment Method:</span>
+              <span className="text-slate-500 block">Payment Mode:</span>
               <span className="font-bold text-emerald-700">{lot.payment_method || 'CASH'}</span>
             </div>
             <div>
@@ -86,6 +95,14 @@ export const ReceiptModal = ({ lot, onClose }) => {
                 {lot.transaction_status}
               </span>
             </div>
+          </div>
+
+          {/* Location Tag */}
+          <div className="pt-2 border-t border-slate-200 text-xs font-sans">
+            <span className="text-slate-500 text-[10px] block">GPS Collection / Handover Location:</span>
+            <span className="font-mono text-[11px] font-bold text-slate-800 block truncate">
+              {lot.handover_location || lot.collection_location || 'Hadapsar, Pune (18.5089° N, 73.9259° E)'}
+            </span>
           </div>
 
           {/* Digital Verification QR Code */}
