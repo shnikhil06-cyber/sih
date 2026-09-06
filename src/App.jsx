@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Header } from './components/common/Header.jsx';
 import { OfflineSyncBar } from './components/common/OfflineSyncBar.jsx';
 import { PhoneContainer } from './components/common/PhoneContainer.jsx';
+import { AppLoginModal } from './components/common/AppLoginModal.jsx';
 import { AudioSpeakerToast } from './components/common/AudioSpeakerToast.jsx';
 import { CollectorHome } from './components/collector/CollectorHome.jsx';
 import { SellEWasteFlow } from './components/collector/SellEWasteFlow.jsx';
@@ -20,7 +21,8 @@ export const App = () => {
   const [activeTab, setActiveTab] = useState('collector');
   const [collectorScreen, setCollectorScreen] = useState('home');
   const [language, setLanguage] = useState('en');
-  
+  const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
+
   const [isOnline, setIsOnline] = useState(() => LocalDatabase.isOnline());
   const [pendingCount, setPendingCount] = useState(() => LocalDatabase.getPendingSyncCount());
   const [profile, setProfile] = useState(() => LocalDatabase.getCollectorProfile());
@@ -40,7 +42,7 @@ export const App = () => {
 
   return (
     <div className="min-h-screen bg-slate-100 text-slate-900 font-sans selection:bg-emerald-500 selection:text-white flex flex-col">
-      {/* Platform Header Navigation */}
+      {/* Platform Header Navigation (Desktop view) */}
       <Header
         activeTab={activeTab}
         setActiveTab={setActiveTab}
@@ -51,12 +53,18 @@ export const App = () => {
       />
 
       {/* Offline Database Sync Status Bar */}
-      <OfflineSyncBar isOnline={isOnline} pendingCount={pendingCount} />
+      <div className="hidden md:block">
+        <OfflineSyncBar isOnline={isOnline} pendingCount={pendingCount} />
+      </div>
 
       {/* Main Content Area */}
-      <main className="flex-1 w-full max-w-7xl mx-auto py-4 px-2 sm:px-4">
+      <main className="flex-1 w-full max-w-7xl mx-auto py-0 md:py-4 px-0 md:px-4">
         {activeTab === 'collector' && (
-          <PhoneContainer>
+          <PhoneContainer
+            language={language}
+            setLanguage={setLanguage}
+            onOpenLoginModal={() => setIsLoginModalOpen(true)}
+          >
             {collectorScreen === 'home' && (
               <CollectorHome
                 profile={profile}
@@ -107,21 +115,38 @@ export const App = () => {
         )}
 
         {activeTab === 'recycler' && (
-          <RecyclerDashboard />
+          <div className="p-2 sm:p-4">
+            <RecyclerDashboard />
+          </div>
         )}
 
         {activeTab === 'economics' && (
-          <UnitEconomics />
+          <div className="p-2 sm:p-4">
+            <UnitEconomics />
+          </div>
         )}
 
         {activeTab === 'architecture' && (
-          <SystemArchitectureView />
+          <div className="p-2 sm:p-4">
+            <SystemArchitectureView />
+          </div>
         )}
       </main>
 
+      {/* In-App Login & Language Selection Modal */}
+      <AppLoginModal
+        isOpen={isLoginModalOpen}
+        onClose={() => setIsLoginModalOpen(false)}
+        language={language}
+        setLanguage={setLanguage}
+        activeTab={activeTab}
+        setActiveTab={setActiveTab}
+        isOnline={isOnline}
+        pendingCount={pendingCount}
+      />
+
       {/* Global Audio Speaker Subtitle & Equalizer Toast */}
       <AudioSpeakerToast />
-
     </div>
   );
 };

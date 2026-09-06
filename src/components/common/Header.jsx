@@ -15,7 +15,7 @@ export const Header = ({
   };
 
   return (
-    <header className="bg-white border-b border-slate-200 text-slate-900 sticky top-0 z-50 shadow-sm">
+    <header className="hidden md:block bg-white border-b border-slate-200 text-slate-900 sticky top-0 z-50 shadow-sm">
       <div className="max-w-7xl mx-auto px-4 py-3">
         <div className="flex flex-col sm:flex-row items-center justify-between gap-3">
           {/* Logo & Platform Name */}
