@@ -242,7 +242,7 @@ export const SellEWasteFlow = ({
                 <span className="text-xs text-slate-500 block">Detected Material:</span>
                 <h3 className="text-lg font-black text-emerald-700">{selectedCategory}</h3>
                 <p className="text-[11px] text-slate-600 font-medium">
-                  {currentMatObj.nameHi}
+                  {currentMatObj[`name${language ? language.charAt(0).toUpperCase() + language.slice(1) : 'En'}`] || currentMatObj.nameEn}
                 </p>
               </div>
             </div>

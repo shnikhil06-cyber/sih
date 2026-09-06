@@ -92,6 +92,10 @@ export const Header = ({
                 <option value="en">English</option>
                 <option value="hi">हिंदी (Hindi)</option>
                 <option value="mr">मराठी (Marathi)</option>
+                <option value="te">తెలుగు (Telugu)</option>
+                <option value="ta">தமிழ் (Tamil)</option>
+                <option value="gu">ગુજરાતી (Gujarati)</option>
+                <option value="bn">বাংলা (Bengali)</option>
               </select>
             </div>
 

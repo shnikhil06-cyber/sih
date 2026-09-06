@@ -5,12 +5,11 @@ import { TTSService } from '../../services/ttsService.js';
 import { getText } from '../../services/i18n.js';
 
 export const SafetyModule = ({ language, onBack }) => {
+  const getLangKey = (lang) => lang ? lang.charAt(0).toUpperCase() + lang.slice(1) : 'En';
+
   const handleSpeakSafety = (guideline) => {
-    const text = language === 'mr'
-      ? guideline.audioTextMr
-      : language === 'hi'
-      ? guideline.audioTextHi
-      : guideline.audioTextEn;
+    const key = getLangKey(language);
+    const text = guideline[`audioText${key}`] || guideline.audioTextEn;
     TTSService.speak(text, language);
   };
 
@@ -33,13 +32,14 @@ export const SafetyModule = ({ language, onBack }) => {
       </div>
 
       <p className="text-xs text-slate-500 font-medium">
-        Important health, environmental, and occupational safety rules. Tap 🔊 for voice readout in Hindi/Marathi.
+        Important health, environmental, and occupational safety rules. Tap 🔊 for voice readout in your selected language.
       </p>
 
       {/* Safety Cards */}
       <div className="space-y-4">
         {SAFETY_GUIDELINES.map(item => {
-          const title = language === 'mr' ? item.titleMr : language === 'hi' ? item.titleHi : item.titleEn;
+          const key = getLangKey(language);
+          const title = item[`title${key}`] || item.titleEn;
           return (
             <div
               key={item.id}
