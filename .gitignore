@@ -22,3 +22,11 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Scratch & Native Build Artifacts
+scratch/
+.gradle/
+android/app/build/
+android/.gradle/
+android/build/
+
