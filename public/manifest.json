@@ -1,0 +1,18 @@
+{
+  "short_name": "Kabadiwala",
+  "name": "Kabadiwala Connect - E-Waste Traceability Platform",
+  "description": "Vernacular, low-literacy, offline-first platform connecting informal e-waste collectors with authorized recyclers.",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "192x192 512x512",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ],
+  "start_url": "/",
+  "background_color": "#059669",
+  "theme_color": "#059669",
+  "display": "standalone",
+  "orientation": "portrait"
+}
